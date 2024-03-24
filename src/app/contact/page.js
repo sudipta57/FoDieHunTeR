@@ -38,7 +38,7 @@ const griditems = [
     info: "Kakdwip, WB",
   },
 ];
-const page = () => {
+const Page = () => {
   const [user, setuser] = useState({
     name: "",
     email: "",
@@ -196,4 +196,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

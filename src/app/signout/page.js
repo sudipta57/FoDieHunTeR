@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { toast } from "react-toastify";
 
-const page = () => {
+const Page = () => {
   const { dispatch } = useContext(cartContext);
 
   const router = useRouter();
@@ -65,11 +65,11 @@ const page = () => {
             return router.push("/");
           }}
         >
-          Go to Home page
+          Go to Home Page
         </Button>
       </Card>
     </center>
   );
 };
 
-export default page;
+export default Page;

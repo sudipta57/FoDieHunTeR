@@ -38,7 +38,13 @@ const Cart = () => {
           {cartItemArray.map((cartItem, index) => (
             <Flex justify="space-between" my="4" p="2" key={cartItem._id}>
               <Flex justifyContent="space-between" w="50%">
-                <Image w="50" h="50" borderRadius="10px" src={cartItem.img} />
+                <Image
+                  w="50"
+                  h="50"
+                  borderRadius="10px"
+                  src={cartItem.img}
+                  alt="image"
+                />
                 <Text my="auto" ps="3">
                   {cartItem.name}
                 </Text>

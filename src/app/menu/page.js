@@ -60,7 +60,7 @@ const Menu = () => {
     } else {
       getDataWithExpiry(localStorage.getItem("foodItems"));
     }
-  }, []);
+  }, [sendFoodRequest]);
 
   return (
     <>

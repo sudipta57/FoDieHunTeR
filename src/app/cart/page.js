@@ -14,7 +14,7 @@ import Link from "next/link";
 import { cartContext } from "@/context/cartcontext";
 import { useContext, useState } from "react";
 import { Bounce, toast } from "react-toastify";
-const page = () => {
+const Page = () => {
   const { cartdata, setcartdata, state } = useContext(cartContext);
   const [useraddress, setUserAddress] = useState();
   const OnplusClick = (index) => {
@@ -128,7 +128,7 @@ const page = () => {
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcsrepyftVfUfL24sWmpmaZaDJw3eIa1Zjii_dLg4WZQ&s",
       handler: function (response) {
-        // Encode the response data and redirect user to the success page with parameters
+        // Encode the response data and redirect user to the success Page with parameters
         const responseData = encodeURIComponent(JSON.stringify(response));
         window.location.href = `/paymentsuccess?data=${responseData}`;
       },
@@ -359,4 +359,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

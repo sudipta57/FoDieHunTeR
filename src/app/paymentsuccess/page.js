@@ -11,7 +11,7 @@ const Paymentsuccess = () => {
   useEffect(() => {
     const paramObj = searchparams.get("data");
     setParam(paramObj);
-  }, []);
+  }, [searchparams]);
   return (
     <div>
       <center>
