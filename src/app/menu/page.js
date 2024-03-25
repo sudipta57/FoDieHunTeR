@@ -56,7 +56,7 @@ const Menu = () => {
     const isKeyAvailable = localStorage.getItem("foodItems") !== null;
 
     if (!isKeyAvailable) {
-      return () => sendFoodRequest();
+      sendFoodRequest();
     } else {
       getDataWithExpiry(localStorage.getItem("foodItems"));
     }
