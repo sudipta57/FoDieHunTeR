@@ -17,7 +17,7 @@ const Menu = () => {
 
   const sendFoodRequest = async () => {
     try {
-      const res = await fetch("api/menu", {
+      const res = await fetch("https://foodiehunter.vercel.app/api/menu", {
         method: "GET",
         headers: {
           Accept: "application/json",
