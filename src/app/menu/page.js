@@ -1,7 +1,7 @@
 "use client";
 import { Box, Container } from "@chakra-ui/react";
 import Cart from "../components/card";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const Menu = () => {
   const [fooddata, setfooddata] = useState([]);
@@ -15,9 +15,25 @@ const Menu = () => {
     localStorage.setItem("foodItems", JSON.stringify(item));
   };
 
-  const sendFoodRequest = async () => {
+  //get data with expiry from localstorege
+  const getDataWithExpiry = (itemString) => {
+    if (!itemString) {
+      return null;
+    }
+    const item = JSON.parse(itemString);
+    setfooddata(item.value);
+    const now = new Date();
+    if (now.getTime() > item.expiry) {
+      // Item has expired, delete it from localStorage
+      localStorage.removeItem("foodItems");
+      return null;
+    }
+    return item.value;
+  };
+
+  const sendFoodRequest = useCallback(async () => {
     try {
-      const res = await fetch("https://foodiehunter.vercel.app/api/menu", {
+      const res = await fetch("api/menu", {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -35,22 +51,7 @@ const Menu = () => {
     } catch (error) {
       console.error(error);
     }
-  };
-  //get data with expiry from localstorege
-  const getDataWithExpiry = (itemString) => {
-    if (!itemString) {
-      return null;
-    }
-    const item = JSON.parse(itemString);
-    setfooddata(item.value);
-    const now = new Date();
-    if (now.getTime() > item.expiry) {
-      // Item has expired, delete it from localStorage
-      localStorage.removeItem("foodItems");
-      return null;
-    }
-    return item.value;
-  };
+  }, []);
 
   useEffect(() => {
     const isKeyAvailable = localStorage.getItem("foodItems") !== null;
@@ -61,7 +62,6 @@ const Menu = () => {
       getDataWithExpiry(localStorage.getItem("foodItems"));
     }
   }, [sendFoodRequest]);
-
   return (
     <>
       <Box className="bg-gray-100">

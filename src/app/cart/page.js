@@ -111,7 +111,7 @@ const Page = () => {
       });
     }
     // Make API call to the serverless API
-    const data = await fetch("https://foodiehunter.vercel.app/api/razorpay", {
+    const data = await fetch("/api/razorpay", {
       method: "POST",
       body: JSON.stringify({ totalBill }), // Assuming price is a variable containing the data you want to send
     });

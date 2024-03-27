@@ -19,7 +19,7 @@ const Herosec = () => {
             <Stack spacing="10">
               <Text className="text-gray-400">
                 We are focused on being the best helping hand to the local
-                <Text>buissnesses</Text>
+                <p>buissnesses</p>
               </Text>
               <Button colorScheme="orange" rounded="lg" w="40">
                 Order now

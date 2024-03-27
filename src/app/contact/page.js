@@ -58,7 +58,7 @@ const Page = () => {
   //sending the contact data's to backend
   const sendContactData = async (e) => {
     e.preventDefault();
-    const res = await fetch("https://foodiehunter.vercel.app/api/contact", {
+    const res = await fetch("api/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
