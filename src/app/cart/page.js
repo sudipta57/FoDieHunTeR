@@ -14,9 +14,12 @@ import Link from "next/link";
 import { cartContext } from "@/context/cartcontext";
 import { useContext, useState } from "react";
 import { Bounce, toast } from "react-toastify";
+import { useSession } from "next-auth/react";
+
 const Page = () => {
   const { cartdata, setcartdata, state } = useContext(cartContext);
   const [useraddress, setUserAddress] = useState();
+  const { data: session } = useSession();
   const OnplusClick = (index) => {
     const updateCart = [...cartdata];
     updateCart[index].quantity += 1;
@@ -120,7 +123,7 @@ const Page = () => {
 
     var options = {
       key: "rzp_test_FoHZrMsipfSV6C", // Enter the Key ID generated from the Dashboard
-      name: "FoodieHub PVT LMT",
+      name: "FoodieHunter PVT LMT",
       currency: res2.currency,
       amount: res2.amount,
       order_id: res2.id,
@@ -133,8 +136,8 @@ const Page = () => {
         window.location.href = `/paymentsuccess?data=${responseData}`;
       },
       prefill: {
-        name: "Foodie Hub",
-        email: "foodieHub@gmail.com",
+        name: session.user.name,
+        email: session.user.email,
         contact: "9999999999",
       },
     };

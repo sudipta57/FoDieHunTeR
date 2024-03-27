@@ -1,6 +1,6 @@
 import { cartContext } from "@/context/cartcontext";
 import { Flex, HStack, Image, Text } from "@chakra-ui/react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 const Cart = () => {
   const { state, dispatch } = useContext(cartContext);
