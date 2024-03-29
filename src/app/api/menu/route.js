@@ -1,7 +1,7 @@
 import dbConnect from "@/utils/connection";
 import { NextResponse } from "next/server";
 import foodData from "../../../../models/fooddataschema";
-export const revalidate = 1;
+export const dynamic = "force-dynamic";
 export async function GET() {
   const connectToDB = await dbConnect();
   if (!connectToDB) {
